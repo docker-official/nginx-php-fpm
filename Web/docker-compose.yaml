@@ -1,0 +1,45 @@
+version: "3.7"
+services:
+  php71:
+    image: classes/php:7.1-fpm-v1.0.1
+    container_name: php71
+    stdin_open: true
+    tty: true
+    privileged: true
+    volumes:
+      - "./php-fpm-71/etc:/usr/local/etc"
+      - "./php-fpm-71/log:/usr/local/var/logv"
+      - "./www:/var/www/html"
+    networks:
+      webserver_network:
+        ipv4_address: 172.21.7.12
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1g"
+  nginx-alpine:
+    image: classes/nginx:alpine-v1.0.1
+    container_name: nginx-alpine
+    stdin_open: true
+    tty: true
+    privileged: true
+    volumes:
+      - "./nginx/conf:/etc/nginx"
+      - "./nginx/log:/var/log/nginx"
+      - "./www:/var/www/html"
+    ports:
+      - "443:443"
+      - "80:80"
+    networks:
+      webserver_network:
+        ipv4_address: 172.21.7.13
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1g"
+networks:
+  webserver_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.7.0/24
