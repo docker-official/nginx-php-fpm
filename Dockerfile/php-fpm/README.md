@@ -7,9 +7,13 @@ Docker container to install and run [PHP-FPM](https://php-fpm.org/).
 Out of the box, fully loaded PHP-FPM docker images, that can support all my PHP projects. I work with Yii2 & Laravel.
 The images are no light weight.
 
-## Dockerfile links
+## Supported tags and respective Dockerfile links
 
--   [Dockerfile](https://github.com/docker-official/nginx-php-fpm/blob/main/Dockerfile/php-fpm/Dockerfile)
+
+-   7.4-fpm [Dockerfile](https://github.com/docker-official/nginx-php-fpm/blob/main/Dockerfile/php-fpm/Dockerfile)
+-   7.3-fpm [Dockerfile](https://github.com/docker-official/nginx-php-fpm/blob/main/Dockerfile/php-fpm/Dockerfile)
+-   7.2-fpm [Dockerfile](https://github.com/docker-official/nginx-php-fpm/blob/main/Dockerfile/php-fpm/Dockerfile)
+-   7.1-fpm [Dockerfile](https://github.com/docker-official/nginx-php-fpm/blob/main/Dockerfile/php-fpm/Dockerfile)
 
 ## Installed extensions
 
@@ -72,12 +76,16 @@ The images are no light weight.
 
 ## Installed Zend Modules
 
--   Zend OPcache
+- Zend OPcache
+
+## Installed Others
+
+-   PHP_CodeSniffer
 
 ## Pull latest image
 
 ```sh
-docker pull classes/php:7.1-fpm-v1.0.1
+docker pull classes/php
 ```
 
 ## Running PHP apps
@@ -87,7 +95,7 @@ docker pull classes/php:7.1-fpm-v1.0.1
 Run the PHP-FPM image, mounting a directory from your host.
 
 ```sh
-docker run -it --name php-fpm -v /path/to/your/app/www:/var/www/html classes/php:7.1-fpm-v1.0.1
+docker run -it --name php-fpm -v /path/to/your/app/www:/var/www/html classes/php
 ```
 
 or using [Docker Compose](https://docs.docker.com/compose/):
@@ -97,7 +105,7 @@ version: '3'
 services:
   php-fpm:
     container_name: php-fpm
-    image: classes/php:7.1-fpm-v1.0.1
+    image: classes/php
     volumes:
       - "/path/to/your/app/www:/var/www/html"
 ```
@@ -105,7 +113,7 @@ services:
 ### Running as server
 
 ```sh
-docker run -d --name php-fpm -v /path/to/your/app/www:/var/www/html classes/php:7.1-fpm-v1.0.1
+docker run -d --name php-fpm -v /path/to/your/app/www:/var/www/html classes/php
 ```
 
 ### Logging
@@ -117,6 +125,6 @@ docker logs php-fpm
 # Listing installed extensions
 
 ```sh
-docker run --rm -it classes/php:7.1-fpm-v1.0.1 php -m
+docker run --rm -it classes/php php -m
 ```
 

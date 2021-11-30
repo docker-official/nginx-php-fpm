@@ -1,16 +1,17 @@
 # Nginx Version
-ARG NGINX_VERSION=1.21.4
+ARG NGINX_VERSION=1.21
 
 # The Base Image
 FROM nginx:${NGINX_VERSION}-alpine
 
 # The Maintainer
-MAINTAINER JohnHe China <564079964@qq.com>
+LABEL maintainer="JohnHe China <564079964@qq.com>"
 
-# Time Zone
-ENV TIME_ZONE=Asia/Shanghai
+# Timezone
+ARG TIMEZONE
+ENV TIMEZONE=${TIMEZONE:-"Asia/Shanghai"}
 
-# Running required command
+# Install dependencies
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
     apk update && \
     apk add --no-cache --virtual .build-deps \
@@ -33,7 +34,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
                 --with-http_degradation_module \
                 --with-http_perl_module && make && \
     apk del .build-deps && \
-    #
+    # Config timezone
+    cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
     # Clean up
-    rm -rf /var/cache/apk/*  /tmp/* ../nginx-${NGINX_VERSION} && \
-    cp /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime
+    rm -rf /var/cache/apk/*  /tmp/* ../nginx-${NGINX_VERSION}

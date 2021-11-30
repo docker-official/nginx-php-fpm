@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   php71:
-    image: classes/php:7.1-fpm-v1.0.1
+    image: classes/php:7.1-fpm
     container_name: php71
     stdin_open: true
     tty: true
@@ -17,9 +17,9 @@ services:
       driver: "json-file"
       options:
         max-size: "1g"
-  nginx-alpine:
-    image: classes/nginx:alpine-v1.0.1
-    container_name: nginx-alpine
+  nginx121:
+    image: classes/nginx:1.21-alpine
+    container_name: nginx121
     stdin_open: true
     tty: true
     privileged: true
