@@ -10,10 +10,10 @@ The images are no light weight.
 ## Supported tags and respective Dockerfile links
 
 
--   7.4-fpm [Dockerfile](https://github.com/docker-official/nginx-php-fpm/blob/main/Dockerfile/php-fpm/Dockerfile)
--   7.3-fpm [Dockerfile](https://github.com/docker-official/nginx-php-fpm/blob/main/Dockerfile/php-fpm/Dockerfile)
--   7.2-fpm [Dockerfile](https://github.com/docker-official/nginx-php-fpm/blob/main/Dockerfile/php-fpm/Dockerfile)
--   7.1-fpm [Dockerfile](https://github.com/docker-official/nginx-php-fpm/blob/main/Dockerfile/php-fpm/Dockerfile)
+-   7.4-fpm [Dockerfile](https://github.com/docker-official/nginx-php-fpm/blob/main/Dockerfile/php-fpm/7.4/Dockerfile)
+-   7.3-fpm [Dockerfile](https://github.com/docker-official/nginx-php-fpm/blob/main/Dockerfile/php-fpm/7.3/Dockerfile)
+-   7.2-fpm [Dockerfile](https://github.com/docker-official/nginx-php-fpm/blob/main/Dockerfile/php-fpm/7.2/Dockerfile)
+-   7.1-fpm [Dockerfile](https://github.com/docker-official/nginx-php-fpm/blob/main/Dockerfile/php-fpm/7.1/Dockerfile)
 
 ## Installed extensions
 
